@@ -9,14 +9,16 @@ public class Mole_Script : MonoBehaviour
 
     void Start()
     {
-        
+    
+
+
     }
 
     
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.A)){
-            SpawnMole(0,0);
+            SpawnMole(Random.Range(1,4),Random.Range(1,4));
         }
     }
 
