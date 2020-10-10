@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Score_System : MonoBehaviour
 {
     [SerializeField]
-    Text scoreText;
-    Text highScoreText;
+    Text scoreText = null;
+    Text highScoreText = null;
 
     int gameScore = 0;
     int highScore = 0;
