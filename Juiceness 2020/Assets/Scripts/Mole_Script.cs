@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mole_Script : MonoBehaviour
 {
     [SerializeField]
-    GameObject mouseObject = null;
+    GameObject mouseObject = null; //Musen
 
     [SerializeField]
     GameObject moleObject = null;  //Prefab för moles /Kalle
@@ -18,7 +18,7 @@ public class Mole_Script : MonoBehaviour
     private float timeBetweenSpawn = 1f; //Tid mellan varje spawn event /Kalle
     private int randomPositionY;
     private int randomPositionX;
-    private int lastRandom;
+    private int lastRandom; //Måste vara global för annars överskrivs den varje frame med fel värde /Kalle
     private GameObject newMole;
     void Awake()
     {
@@ -45,33 +45,28 @@ public class Mole_Script : MonoBehaviour
         if(timeBetweenSpawn <= 0f && numberOfMolesAlive < 1){
            
             int random = Random.Range(0,holesPositionX.Length);
-            if(random != lastRandom){
+            if(random == lastRandom){ //Om den valde samma random plats igen så gör den om random uträkningen, jag vet att detta inte löser det fullständingt men det minskar chansen avsevärt /Kalle
                 random = Random.Range(0,holesPositionX.Length);
-                randomPositionX = (int) Mathf.Round(holesPositionX[random]);
-                randomPositionY = (int) Mathf.Round(holesPositionY[random]);
-            }else{
-                randomPositionX = (int) Mathf.Round(holesPositionX[random]);
-                randomPositionY = (int) Mathf.Round(holesPositionY[random]);
+                randomPositionX = (int) Mathf.Round(holesPositionX[random]); //väljer en random position i arrayen och rundar av det till en int /Kalle
+                randomPositionY = (int) Mathf.Round(holesPositionY[random]); //
+            }else{                                                           //
+                randomPositionX = (int) Mathf.Round(holesPositionX[random]); //
+                randomPositionY = (int) Mathf.Round(holesPositionY[random]); //
             }
             
-            newMole = Instantiate(moleObject,new Vector3(randomPositionX,randomPositionY,0),Quaternion.identity);
+            newMole = Instantiate(moleObject,new Vector3(randomPositionX,randomPositionY,0),Quaternion.identity); //definerar newMole som ett nytt Instansiatat object /Kalle
             numberOfMolesAlive += 1;
 
             timeBetweenSpawn = 1f;
             lastRandom = random;
         }
 
-        if(Input.GetMouseButtonDown(0)){
-            if(Mathf.Round(mousePosition.x) == randomPositionX && Mathf.Round(mousePosition.y) == randomPositionY){
-                Debug.Log("hit");
+        if(Input.GetMouseButtonDown(0)){ 
+            if(Mathf.Round(mousePosition.x) == randomPositionX && Mathf.Round(mousePosition.y) == randomPositionY){ //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
                 numberOfMolesAlive -= 1;
                 Destroy(newMole);
             }
         }
 
-    }
-
-    public void SpawnMole(float xPosition, float yPosition){ //Method som sköter spawning av moles /Kalle 
-        Instantiate(moleObject,new Vector3(xPosition,yPosition,0),Quaternion.identity);
     }
 }
