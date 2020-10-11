@@ -18,7 +18,7 @@ public class Mole_Script : MonoBehaviour
     private float timeBetweenSpawn = 1f; //Tid mellan varje spawn event /Kalle
     private int randomPositionY;
     private int randomPositionX;
-    private int lastRandom; //Måste vara global för annars överskrivs den varje frame med fel värde /Kalle
+    private int lastRandom = 999; //Måste vara global för annars överskrivs den varje frame med fel värde /Kalle
     private GameObject newMole;
     void Awake()
     {
@@ -30,26 +30,29 @@ public class Mole_Script : MonoBehaviour
     }
     
     void Update()
-    {   
+    {
 
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = 10f; //Just Z axis so its getting the position infront of the camera
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //Gets mouse postion in world space
         mouseObject.transform.position = mousePosition; //Object following the mouse position
 
- 
 
-        
+
+
         timeBetweenSpawn -= 1*Time.deltaTime;
 
         if(timeBetweenSpawn <= 0f && numberOfMolesAlive < 1){
            
             int random = Random.Range(0,holesPositionX.Length);
-            if(random == lastRandom){ //Om den valde samma random plats igen så gör den om random uträkningen, jag vet att detta inte löser det fullständingt men det minskar chansen avsevärt /Kalle
-                random = Random.Range(0,holesPositionX.Length);
-                randomPositionX = (int) Mathf.Round(holesPositionX[random]); //väljer en random position i arrayen och rundar av det till en int /Kalle
-                randomPositionY = (int) Mathf.Round(holesPositionY[random]); //
-            }else{                                                           //
+            if(random == lastRandom){ //Om den valde samma random plats igen så ökar den bara random igen och om random är mer än antalet hål den kan hamna i resetar den till 0(vilket är starten på arrayen)/Kalle
+                random++;             //Detta funkar inte riktigt och fattar inte varför /Kalle
+                if(random > holesPositionX.Length){
+                    random = 0;
+                    randomPositionX = (int) Mathf.Round(holesPositionX[random]); //väljer en random position i arrayen och rundar av det till en int /Kalle
+                    randomPositionY = (int) Mathf.Round(holesPositionY[random]); //
+                }
+            }else if(random != lastRandom){ //Om random == en ny sifra än förra så placerar den bara ut den där /Kalle
                 randomPositionX = (int) Mathf.Round(holesPositionX[random]); //
                 randomPositionY = (int) Mathf.Round(holesPositionY[random]); //
             }
