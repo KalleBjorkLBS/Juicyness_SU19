@@ -20,6 +20,7 @@ public class Mole_Script : MonoBehaviour
     private int randomPositionX;
     private int lastRandom = 999; //Måste vara global för annars överskrivs den varje frame med fel värde /Kalle
     private GameObject newMole;
+    
     void Awake()
     {
         for (int i = 0; i < Mathf.Min(holesObject.Length, holesPositionX.Length); i++) //Bestämer x och y värden i deras respektive array baserat på hålens position /Kalle
@@ -36,9 +37,6 @@ public class Mole_Script : MonoBehaviour
         mousePosition.z = 10f; //Just Z axis so its getting the position infront of the camera
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //Gets mouse postion in world space
         mouseObject.transform.position = mousePosition; //Object following the mouse position
-
-
-
 
         timeBetweenSpawn -= 1*Time.deltaTime;
 
