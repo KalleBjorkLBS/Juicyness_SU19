@@ -11,7 +11,7 @@ public class Gun_Script : MonoBehaviour
     {
         Vector3 vectorToTarget = target.transform.position - transform.position; //Gets target position
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg; //Gets only 2D position and angle towards target
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward); //Points gun towards target in 2D space
+        Quaternion q = Quaternion.AngleAxis(angle + -90f, Vector3.forward); //Points gun towards target in 2D space
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speed); //How fast it can rotate
     }
 }

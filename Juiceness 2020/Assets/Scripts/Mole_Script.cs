@@ -40,6 +40,13 @@ public class Mole_Script : MonoBehaviour
 
         timeBetweenSpawn -= 1*Time.deltaTime;
 
+        if(Input.GetMouseButtonDown(0)){ 
+            if(Mathf.Round(mousePosition.x) == randomPositionX && Mathf.Round(mousePosition.y) == randomPositionY){ //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
+                numberOfMolesAlive -= 1;
+                Destroy(newMole);
+            }
+        }
+
         if(timeBetweenSpawn <= 0f && numberOfMolesAlive < 1){
            
             int random = Random.Range(0,holesPositionX.Length);
@@ -62,12 +69,7 @@ public class Mole_Script : MonoBehaviour
             lastRandom = random;
         }
 
-        if(Input.GetMouseButtonDown(0)){ 
-            if(Mathf.Round(mousePosition.x) == randomPositionX && Mathf.Round(mousePosition.y) == randomPositionY){ //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
-                numberOfMolesAlive -= 1;
-                Destroy(newMole);
-            }
-        }
+
 
     }
 }
