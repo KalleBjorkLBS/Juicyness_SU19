@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mole_Script : MonoBehaviour
+public class Mole_Script : Score_System
 {
     [SerializeField]
     GameObject mouseObject = null; //Musen
@@ -32,7 +32,7 @@ public class Mole_Script : MonoBehaviour
     
     void Update()
     {
-
+        scoreText.text = gameScore.ToString();
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = 10f; //Just Z axis so its getting the position infront of the camera
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //Gets mouse postion in world space
@@ -66,6 +66,7 @@ public class Mole_Script : MonoBehaviour
             if(Mathf.Round(mousePosition.x) == randomPositionX && Mathf.Round(mousePosition.y) == randomPositionY){ //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
                 numberOfMolesAlive -= 1;
                 Destroy(newMole);
+                MolePoints();
             }
         }
 

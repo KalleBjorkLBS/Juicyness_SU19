@@ -149,6 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e743f6701b9dca4e9a26b56389813e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 605097622}
+  highScoreText: {fileID: 0}
+  gameScore: 0
+  highScore: 0
+  whackPoints: 50
   mouseObject: {fileID: 1295322937}
   moleObject: {fileID: 5945116389486111099, guid: 26bf28e9691c8454fb0d22af0a538f72,
     type: 3}
@@ -1193,6 +1198,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 605097622}
+  highScoreText: {fileID: 0}
+  gameScore: 0
+  highScore: 0
+  whackPoints: 50
 --- !u!4 &1251719699
 Transform:
   m_ObjectHideFlags: 0

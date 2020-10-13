@@ -6,21 +6,17 @@ using UnityEngine.UI;
 public class Score_System : MonoBehaviour
 {
     [SerializeField]
-    Text scoreText = null;
-    Text highScoreText = null;
+    public Text scoreText = null;
+    public Text highScoreText = null;
 
-    int gameScore = 0;
-    int highScore = 0;
-    int whackPoints = 50;
+    public int gameScore = 0;
+    public int highScore = 0;
+    public int whackPoints = 50;
     
 
-    void Update()
+    public void MolePoints()
     {
         scoreText.text = gameScore.ToString();
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            gameScore = gameScore+whackPoints;
-        }
+        gameScore = gameScore + whackPoints;
     }
 }
