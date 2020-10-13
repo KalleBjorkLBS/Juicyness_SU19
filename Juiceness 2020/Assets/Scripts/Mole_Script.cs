@@ -30,9 +30,9 @@ public class Mole_Script : Score_System
         }
     }
     
-    void Update()
+    void FixedUpdate()
     {
-        scoreText.text = gameScore.ToString();
+        scoreText.text = gameScore.ToString(); //Update the score
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = 10f; //Just Z axis so its getting the position infront of the camera
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //Gets mouse postion in world space
@@ -63,7 +63,7 @@ public class Mole_Script : Score_System
         }
 
         if(Input.GetMouseButtonDown(0)){ 
-            if(Mathf.Round(mousePosition.x) == randomPositionX && Mathf.Round(mousePosition.y) == randomPositionY){ //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
+            if(Mathf.Round(mousePosition.x) == randomPositionX && Mathf.Round(mousePosition.y) == randomPositionY && numberOfMolesAlive > 0){ //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
                 numberOfMolesAlive -= 1;
                 Destroy(newMole);
                 MolePoints();
