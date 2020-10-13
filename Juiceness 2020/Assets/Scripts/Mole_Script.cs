@@ -9,9 +9,9 @@ public class Mole_Script : Score_System
 
     [SerializeField]
     GameObject moleObject = null;  //Prefab för moles /Kalle
-    public GameObject[] holesObject = new GameObject[9]; //Platser där moles kan spawna /Kalle
-    private float[] holesPositionX = new float[9];  //Hålens x position /Kalle
-    private float[] holesPositionY = new float[9];  //Hålens y position /Kalle
+    public GameObject[] holesObject; //Platser där moles kan spawna /Kalle
+    private float[] holesPositionX;  //Hålens x position /Kalle
+    private float[] holesPositionY;  //Hålens y position /Kalle
 
     //Klass variabler
     private int numberOfMolesAlive = 0; //Hur många moles som får vara vid liv samtidigt /Kalle
@@ -23,6 +23,9 @@ public class Mole_Script : Score_System
     
     void Awake()
     {
+        float[] holesPositionX = new float[holesObject.Length];
+        float[] holesPositionY = new float[holesObject.Length];
+
         for (int i = 0; i < Mathf.Min(holesObject.Length, holesPositionX.Length); i++) //Bestämer x och y värden i deras respektive array baserat på hålens position /Kalle
         {
             holesPositionX[i] = holesObject[i].transform.position.x;
@@ -32,7 +35,7 @@ public class Mole_Script : Score_System
     
     void Update()
     {
-        scoreText.text = gameScore.ToString();
+       
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = 10f; //Just Z axis so its getting the position infront of the camera
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //Gets mouse postion in world space
@@ -63,10 +66,11 @@ public class Mole_Script : Score_System
         }
 
         if(Input.GetMouseButtonDown(0)){ 
-            if(Mathf.Round(mousePosition.x) == randomPositionX && Mathf.Round(mousePosition.y) == randomPositionY){ //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
+            if(Mathf.Round(mousePosition.x) == randomPositionX && Mathf.Round(mousePosition.y) == randomPositionY && numberOfMolesAlive > 0){ //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
                 numberOfMolesAlive -= 1;
                 Destroy(newMole);
                 MolePoints();
+                scoreText.text = gameScore.ToString();
             }
         }
 
