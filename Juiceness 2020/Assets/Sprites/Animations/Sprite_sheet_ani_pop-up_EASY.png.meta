@@ -1,0 +1,448 @@
+fileFormatVersion: 2
+guid: 8df11dbfb5ccf4f48be74e2562b56b70
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2569186756414402568
+    second: Sprite_sheet_ani_pop-up_EASY_0
+  - first:
+      213: -2710891735718740678
+    second: Sprite_sheet_ani_pop-up_EASY_1
+  - first:
+      213: 2768179931786532906
+    second: Sprite_sheet_ani_pop-up_EASY_2
+  - first:
+      213: -3823991819959318557
+    second: Sprite_sheet_ani_pop-up_EASY_6
+  - first:
+      213: -451052090155209601
+    second: Sprite_sheet_ani_pop-up_EASY_7
+  - first:
+      213: 7311596263398169941
+    second: Sprite_sheet_ani_pop-up_EASY_8
+  - first:
+      213: -838903316815305330
+    second: Sprite_sheet_ani_pop-up_EASY_9
+  - first:
+      213: -3178478670689049707
+    second: Sprite_sheet_ani_pop-up_EASY_10
+  - first:
+      213: -7674201706380342645
+    second: Sprite_sheet_ani_pop-up_EASY_12
+  - first:
+      213: -7713317558131207836
+    second: Sprite_sheet_ani_pop-up_EASY_15
+  - first:
+      213: 7356694460016484921
+    second: Sprite_sheet_ani_pop-up_EASY_18
+  - first:
+      213: -6419379109376818321
+    second: Sprite_sheet_ani_pop-up_EASY_19
+  - first:
+      213: -2907987192434446826
+    second: Sprite_sheet_ani_pop-up_EASY_23
+  - first:
+      213: -5193259280119861138
+    second: Sprite_sheet_ani_pop-up_EASY_24
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_0
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 3208
+        width: 31
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f12f0b69f4451f42a2f1bf2e14ae666
+      internalID: 2569186756414402568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_1
+      rect:
+        serializedVersion: 2
+        x: 2384
+        y: 3208
+        width: 33
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbaf08718f490d94d9c2bed8c16b92cc
+      internalID: -2710891735718740678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_2
+      rect:
+        serializedVersion: 2
+        x: 4303
+        y: 3206
+        width: 33
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d82f1f1cd37bb44a9555b71338ec4a
+      internalID: 2768179931786532906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_6
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 2173
+        width: 335
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e737d60ef042a54d94937af55abf313
+      internalID: -3823991819959318557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_7
+      rect:
+        serializedVersion: 2
+        x: 2217
+        y: 2173
+        width: 366
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98451f56a308e554a96660658c68e257
+      internalID: -451052090155209601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_8
+      rect:
+        serializedVersion: 2
+        x: 3164
+        y: 2173
+        width: 394
+        height: 319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6542368fbc39e89439b83f968fdfa482
+      internalID: 7311596263398169941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_9
+      rect:
+        serializedVersion: 2
+        x: 4123
+        y: 2173
+        width: 393
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6039676d653a0d48a240b72505bd881
+      internalID: -838903316815305330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_10
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1212
+        width: 483
+        height: 499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a9a66ab0e2eedf48b2012ca1f69404b
+      internalID: -3178478670689049707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_12
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 1213
+        width: 691
+        height: 497
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d4dcaad5c2fd074ba047c7976b2558e
+      internalID: -7674201706380342645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_15
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 1213
+        width: 735
+        height: 498
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 642ac2f5b0ecf924188f25245986cd51
+      internalID: -7713317558131207836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_18
+      rect:
+        serializedVersion: 2
+        x: 2998
+        y: 1212
+        width: 736
+        height: 499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e6421ff688f3d4ba46b9b016181360
+      internalID: 7356694460016484921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_19
+      rect:
+        serializedVersion: 2
+        x: 4078
+        y: 1212
+        width: 483
+        height: 499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fa79998cfa6ce4b97589a264d43730
+      internalID: -6419379109376818321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_23
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 253
+        width: 483
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c0f1471f652094085672dfbb1a397b
+      internalID: -2907987192434446826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_sheet_ani_pop-up_EASY_24
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 253
+        width: 485
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1674ea858256f643b801633f40606ed
+      internalID: -5193259280119861138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 621bae97e5c5f5d45b41f132c059ba3f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
