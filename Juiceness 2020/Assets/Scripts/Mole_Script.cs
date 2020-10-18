@@ -5,8 +5,11 @@ using UnityEngine;
 public class Mole_Script : Score_System
 {
     [SerializeField]
-    GameObject mouseObject = null; //Musen    
+    GameObject mouseObject = null; //Musen
     
+    [SerializeField]
+    AudioSource gunSound = null;
+
     #region Holes vars
     [SerializeField]
     GameObject moleObject = null;  //Prefab för moles /Kalle
@@ -23,12 +26,15 @@ public class Mole_Script : Score_System
     private int lastRandom = 999; //Måste vara global för annars överskrivs den varje frame med fel värde /Kalle
     private GameObject newMole;
     private Animator moleAnims = null;
+
+    private AudioSource popEffect = null;
     private float life = 100;
     
     #endregion
     void Awake()
     {
-        Cursor.visible = false; 
+        Cursor.visible = false;
+        popEffect = GetComponent<AudioSource>(); 
 
         for (int i = 0; i < Mathf.Min(holesObject.Length, holesPositionX.Length); i++) //Bestämer x och y värden i deras respektive array baserat på hålens position /Kalle
         {
@@ -82,10 +88,12 @@ public class Mole_Script : Score_System
         }
 
         if(Input.GetMouseButtonDown(0)){ 
+            gunSound.Play();
             if(mousePosition.x + 0.5f >= randomPositionX && mousePosition.x - 0.5f <= randomPositionX && mousePosition.y + 0.5f >= randomPositionY && mousePosition.y - 0.5f <= randomPositionY && numberOfMolesAlive > 0){ 
                 //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
                 scoreText.text = gameScore.ToString();
                 moleAnims.SetBool("Has_Been_Shot", true);
+                popEffect.Play();
             }
         }
 
