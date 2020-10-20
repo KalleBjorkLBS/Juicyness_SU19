@@ -22,13 +22,13 @@ public class Score_System : MonoBehaviour
     }
     public void MolePoints()
     {
-        scoreText.text = gameScore.ToString();
-        gameScore = gameScore + whackPoints;
+        int newscore = gameScore += whackPoints;
+        scoreText.text = newscore.ToString();
     }
     void OnDisable()
     {
 
-        //If our scoree is greter than highscore, set new higscore and save.
+        //If our score is greter than highscore, set new higscore and save.
         if (gameScore > highScore)
         {
             PlayerPrefs.SetInt(highScoreKey, gameScore);
