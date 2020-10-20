@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mole_Script : Score_System
 {
     [SerializeField]
-    GameObject mouseObject = null; //Musen
+    GameObject mouseObject = null; //Reticle för musen
     
     [SerializeField]
-    AudioSource gunSound = null;
+    AudioSource gunSound = null; //Ljud komponenten för pistolen
+
+    [SerializeField]
+    Text lifeText = null;
 
     #region Holes vars
     [SerializeField]
@@ -28,12 +32,12 @@ public class Mole_Script : Score_System
     private Animator moleAnims = null;
 
     private AudioSource popEffect = null;
-    private float life = 100;
+    public float life = 100;
     
     #endregion
     void Awake()
     {
-        Cursor.visible = false;
+        Cursor.visible = false; //Gör musen osynlig
         popEffect = GetComponent<AudioSource>(); 
 
         for (int i = 0; i < Mathf.Min(holesObject.Length, holesPositionX.Length); i++) //Bestämer x och y värden i deras respektive array baserat på hålens position /Kalle
@@ -47,10 +51,10 @@ public class Mole_Script : Score_System
     {
         moleAnims = FindObjectOfType<Animator>();
         
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = 10f; //Just Z axis so its getting the position infront of the camera
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //Gets mouse postion in world space
-        mouseObject.transform.position = mousePosition; //Object following the mouse position
+        Vector3 mousePosition = Input.mousePosition;                                                        //Allt detta är för att
+        mousePosition.z = 10f; //Just Z axis so its getting the position infront of the camera              //spara musens position
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //Gets mouse postion in world space  //för att sedan ändra transformen
+        mouseObject.transform.position = mousePosition; //Object following the mouse position               //på ett gameobject så att den följer musen 
 
         timeBetweenSpawn -= 1*Time.deltaTime;
 
@@ -76,14 +80,13 @@ public class Mole_Script : Score_System
             lastRandom = random;
         }
 
-        if(timeBetweenSpawn < -0.001f){
-
-            life -= 10f;
-            moleAnims.SetBool("Has_Despawned", true);
-
-            if(moleAnims.GetCurrentAnimatorStateInfo(0).IsName("Moles_Despawn_Anim") && moleAnims.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f){
+        if(timeBetweenSpawn < -0.001f){ //Om mole lever för länge /Kalle
+            moleAnims.SetBool("Has_Despawned", true); //Startar en animation /Kalle
+            if(moleAnims.GetCurrentAnimatorStateInfo(0).IsName("Moles_Despawn_Anim") && moleAnims.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f){ //När animation är klar 
                 Destroy(newMole);
                 numberOfMolesAlive -= 1;
+                life -= 10f; //Spelaren tar skada /Kalle
+                lifeText.text = "Life: " + life;
             }
         }
 
@@ -97,13 +100,14 @@ public class Mole_Script : Score_System
             }
         }
 
-        if(moleAnims != null){ //I och med att jag letar efter den nya molen varje frame så finns det inte hela tiden så enbart om den har en animator riktad till sig så kan den utföra koden nedan /Kalle
+        if(moleAnims != null){ //I och med att jag letar efter den nya molen varje frame så finns den inte hela tiden så enbart om den har en animator riktad till sig så kan den utföra koden nedan /Kalle
             if(moleAnims.GetCurrentAnimatorStateInfo(0).IsName("Mole_Death_Anim") && moleAnims.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f){ //När Mole_Death_anim är slut så får den gå vidare /Kalle 
                 numberOfMolesAlive -= 1;
                 Destroy(newMole);
                 MolePoints();
                 if(life < 100){
                     life += 5;
+                    lifeText.text = "Life: "+ life;
                 }
             }
         } //Frågar man den om den ej var null så får man errors /Kalle
