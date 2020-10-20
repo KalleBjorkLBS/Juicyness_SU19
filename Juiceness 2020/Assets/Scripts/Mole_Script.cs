@@ -6,25 +6,36 @@ public class Mole_Script : Score_System
 {
     [SerializeField]
     GameObject mouseObject = null; //Musen
+    
+    [SerializeField]
+    AudioSource gunSound = null;
 
+    #region Holes vars
     [SerializeField]
     GameObject moleObject = null;  //Prefab för moles /Kalle
     public GameObject[] holesObject = new GameObject[9]; //Platser där moles kan spawna /Kalle
     private float[] holesPositionX = new float[99];  //Hålens x position /Kalle
     private float[] holesPositionY = new float[99];  //Hålens y position /Kalle
+    #endregion
 
-    //Klass variabler
+    #region Klass variabler
     private int numberOfMolesAlive = 0; //Hur många moles som får vara vid liv samtidigt /Kalle
     private float timeBetweenSpawn = 1f; //Tid mellan varje spawn event /Kalle
     private float randomPositionY;
     private float randomPositionX;
     private int lastRandom = 999; //Måste vara global för annars överskrivs den varje frame med fel värde /Kalle
     private GameObject newMole;
+    private Animator moleAnims = null;
 
+    private AudioSource popEffect = null;
     private float life = 100;
     
+    #endregion
     void Awake()
     {
+        Cursor.visible = false;
+        popEffect = GetComponent<AudioSource>(); 
+
         for (int i = 0; i < Mathf.Min(holesObject.Length, holesPositionX.Length); i++) //Bestämer x och y värden i deras respektive array baserat på hålens position /Kalle
         {
             holesPositionX[i] = holesObject[i].transform.position.x;
@@ -34,7 +45,8 @@ public class Mole_Script : Score_System
     
     void Update()
     {
-       
+        moleAnims = FindObjectOfType<Animator>();
+        
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = 10f; //Just Z axis so its getting the position infront of the camera
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //Gets mouse postion in world space
@@ -50,15 +62,15 @@ public class Mole_Script : Score_System
                 if(random > holesObject.Length){
                     random = 0;
                     randomPositionX = holesPositionX[random]; //väljer en random position i arrayen och rundar av det till en int /Kalle
-                    randomPositionY = holesPositionY[random]; //
+                    randomPositionY = holesPositionY[random];
                 }
             }else{ //Om random == en ny sifra än förra så placerar den bara ut den där /Kalle
-                randomPositionX = holesPositionX[random]; //
-                randomPositionY = holesPositionY[random]; //
+                randomPositionX = holesPositionX[random];
+                randomPositionY = holesPositionY[random];
             }
             
-            newMole = Instantiate(moleObject,new Vector3(randomPositionX,randomPositionY,0),Quaternion.identity); //definerar newMole som ett nytt Instansiatat object /Kalle
-            numberOfMolesAlive += 1;
+            newMole = Instantiate(moleObject,new Vector3(randomPositionX,randomPositionY + 0.3f,0),Quaternion.identity); //definerar newMole som ett nytt Instansiatat object /Kalle
+            numberOfMolesAlive += 1;                                                                                     // Den placerar också den newMole på dess förbestämda random position /Kalle
 
             timeBetweenSpawn = 1f;
             lastRandom = random;
@@ -66,25 +78,34 @@ public class Mole_Script : Score_System
 
         if(timeBetweenSpawn < -0.001f){
 
-            //TODO Starta despawn animation
-
-            //if mole death animation är över då kan de nedan ske
-            Destroy(newMole);
-            numberOfMolesAlive -= 1;
             life -= 10f;
+            moleAnims.SetBool("Has_Despawned", true);
+
+            if(moleAnims.GetCurrentAnimatorStateInfo(0).IsName("Moles_Despawn_Anim") && moleAnims.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f){
+                Destroy(newMole);
+                numberOfMolesAlive -= 1;
+            }
         }
 
         if(Input.GetMouseButtonDown(0)){ 
-            if(mousePosition.x + 0.5f >= randomPositionX && mousePosition.x - 0.5f <= randomPositionX && mousePosition.y + 0.5f >= randomPositionY && mousePosition.y - 0.5f <= randomPositionY && numberOfMolesAlive > 0){ //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
+            gunSound.Play();
+            if(mousePosition.x + 0.5f >= randomPositionX && mousePosition.x - 0.5f <= randomPositionX && mousePosition.y + 0.5f >= randomPositionY && mousePosition.y - 0.5f <= randomPositionY && numberOfMolesAlive > 0){ 
+                //Om musen är ungefär ovanpå en mole så träffar den och förstör den /Kalle
+                scoreText.text = gameScore.ToString();
+                moleAnims.SetBool("Has_Been_Shot", true);
+                popEffect.Play();
+            }
+        }
+
+        if(moleAnims != null){ //I och med att jag letar efter den nya molen varje frame så finns det inte hela tiden så enbart om den har en animator riktad till sig så kan den utföra koden nedan /Kalle
+            if(moleAnims.GetCurrentAnimatorStateInfo(0).IsName("Mole_Death_Anim") && moleAnims.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f){ //När Mole_Death_anim är slut så får den gå vidare /Kalle 
                 numberOfMolesAlive -= 1;
                 Destroy(newMole);
                 MolePoints();
                 if(life < 100){
-                    life += 10;
+                    life += 5;
                 }
-                scoreText.text = gameScore.ToString();
-                //TODO Kill animation
             }
-        }
+        } //Frågar man den om den ej var null så får man errors /Kalle
     }
 }
