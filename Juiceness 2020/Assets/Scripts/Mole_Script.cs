@@ -86,7 +86,7 @@ public class Mole_Script : Score_System
                 Destroy(newMole);
                 numberOfMolesAlive -= 1;
                 life -= 10f; //Spelaren tar skada /Kalle
-                lifeText.text = "Life: " + life;
+                lifeText.text = life.ToString() ;
             }
         }
 
@@ -107,7 +107,7 @@ public class Mole_Script : Score_System
                 MolePoints();
                 if(life < 100){
                     life += 5;
-                    lifeText.text = "Life: "+ life;
+                    lifeText.text = life.ToString();
                 }
             }
         } //Frågar man den om den ej var null så får man errors /Kalle
