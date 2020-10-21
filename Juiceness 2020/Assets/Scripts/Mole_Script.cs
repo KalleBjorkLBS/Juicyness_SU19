@@ -46,9 +46,8 @@ public class Mole_Script : Score_System
         Cursor.visible = false; //Gör musen osynlig
         popEffect = GetComponent<AudioSource>(); 
         life = 100;
-        lifeText.text = "Life:" + life;
+        lifeText.text = life.ToString();
         postProcessProfile = FindObjectOfType<PostProcessProfile>();
-        postProcessProfile.TryGetSettings(out vignetteLayer);
 
         for (int i = 0; i < Mathf.Min(holesObject.Length, holesPositionX.Length); i++) //Bestämer x och y värden i deras respektive array baserat på hålens position /Kalle
         {
@@ -96,8 +95,7 @@ public class Mole_Script : Score_System
                 Destroy(newMole);
                 numberOfMolesAlive -= 1;
                 life -= 10f; //Spelaren tar skada /Kalle
-               // vignetteLayer.intensity.value = life/10;
-                lifeText.text = "Life: " + life;
+                lifeText.text = life.ToString();
             }
         }
 
@@ -118,7 +116,7 @@ public class Mole_Script : Score_System
                 MolePoints();
                 if(life < 100){
                     life += 5;
-                    lifeText.text = "Life: "+ life;
+                    lifeText.text = life.ToString();
                 //    vignetteLayer.intensity.value = life/10;
                 }
             }
