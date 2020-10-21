@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Mole_Script : Score_System
+public class Mole_Script : Score_System 
 {
     [SerializeField]
     GameObject mouseObject = null; //Reticle för musen
@@ -86,7 +86,9 @@ public class Mole_Script : Score_System
                 Destroy(newMole);
                 numberOfMolesAlive -= 1;
                 life -= 10f; //Spelaren tar skada /Kalle
-                lifeText.text = life.ToString() ;
+                lifeText.text = life.ToString();
+
+
             }
         }
 
