@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
+
 
 public class Mole_Script : Score_System
 {
@@ -10,6 +12,9 @@ public class Mole_Script : Score_System
     
     [SerializeField]
     AudioSource gunSound = null; //Ljud komponenten för pistolen
+
+    [SerializeField]
+    PostProcessProfile postProcessProfile = null;
 
     [SerializeField]
     Text lifeText = null;
@@ -30,15 +35,20 @@ public class Mole_Script : Score_System
     private int lastRandom = 999; //Måste vara global för annars överskrivs den varje frame med fel värde /Kalle
     private GameObject newMole;
     private Animator moleAnims = null;
+    private Vignette vignetteLayer = null;
 
     private AudioSource popEffect = null;
-    public float life = 100;
+    public float life;
     
     #endregion
     void Awake()
     {
         Cursor.visible = false; //Gör musen osynlig
         popEffect = GetComponent<AudioSource>(); 
+        life = 100;
+        lifeText.text = "Life:" + life;
+        postProcessProfile = FindObjectOfType<PostProcessProfile>();
+        postProcessProfile.TryGetSettings(out vignetteLayer);
 
         for (int i = 0; i < Mathf.Min(holesObject.Length, holesPositionX.Length); i++) //Bestämer x och y värden i deras respektive array baserat på hålens position /Kalle
         {
@@ -86,6 +96,7 @@ public class Mole_Script : Score_System
                 Destroy(newMole);
                 numberOfMolesAlive -= 1;
                 life -= 10f; //Spelaren tar skada /Kalle
+               // vignetteLayer.intensity.value = life/10;
                 lifeText.text = "Life: " + life;
             }
         }
@@ -108,6 +119,7 @@ public class Mole_Script : Score_System
                 if(life < 100){
                     life += 5;
                     lifeText.text = "Life: "+ life;
+                //    vignetteLayer.intensity.value = life/10;
                 }
             }
         } //Frågar man den om den ej var null så får man errors /Kalle
